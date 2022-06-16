@@ -1,20 +1,56 @@
 {
   "name": "ts-next-chakra-template",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "pre-commit": "lint-staged",
     "build": "next build",
+    "clean-install": "rimraf node_modules package-lock.json .next && npm i --legacy-peer-deps",
+    "cy:headless": "cypress run --headless",
+    "cy:open": "cypress open",
+    "dev": "next dev",
+    "format": "prettier --write .",
+    "lint": "npm run lint:types && npm run lint:src",
+    "lint:fix": "next lint --fix",
+    "lint:src": "next lint",
+    "lint:types": "tsc --noEmit",
+    "prepare": "husky install",
+    "redis:flush": "docker exec -it php php index.php redis:flushdb 2",
     "start": "next start",
-    "lint": "next lint"
+    "start:backend": "node ./scripts/start-backend",
+    "preversion": "git fetch --tags --force",
+    "postversion": "git push --tags"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.2.1",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "framer-motion": "^6.3.11",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "eslint": "8.17.0",
-    "eslint-config-next": "12.1.6"
+    "@axe-core/react": "^4.4.3",
+    "@faker-js/faker": "^7.2.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.12",
+    "@types/tailwindcss": "^3.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-next": "^12.1.6",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-tsdoc": "^0.2.16",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.1",
+    "prettier": "^2.7.0",
+    "prettier-package-json": "^2.6.3",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.3"
   }
 }
