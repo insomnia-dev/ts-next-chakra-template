@@ -16,6 +16,7 @@
     "pre-commit": "lint-staged",
     "prepare": "husky install",
     "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "preversion": "git fetch --tags --force",
     "postversion": "git push --tags"
   },
